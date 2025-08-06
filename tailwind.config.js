@@ -24,11 +24,17 @@ export default {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
+          DEFAULT: '#0055A4',
+          50: '#eff6ff',
+          500: '#0055A4',
+          600: '#004494',
+          700: '#003384',
           foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
+          DEFAULT: '#666666',
+          500: '#666666',
+          600: '#555555',
           foreground: 'hsl(var(--secondary-foreground))',
         },
         destructive: {
@@ -40,7 +46,9 @@ export default {
           foreground: 'hsl(var(--muted-foreground))',
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
+          DEFAULT: '#FF6600',
+          500: '#FF6600',
+          600: '#E55A00',
           foreground: 'hsl(var(--accent-foreground))',
         },
         popover: {
@@ -51,6 +59,9 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+      },
+      fontFamily: {
+        'proxima': ['Proxima Nova', 'Arial', 'sans-serif'],
       },
       borderRadius: {
         lg: 'var(--radius)',

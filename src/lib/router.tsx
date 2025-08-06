@@ -1,8 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from '@/App'
-import { LandingPage } from '@/pages/landing/LandingPage'
-import { LoginPage } from '@/pages/login/LoginPage'
-import { SignupPage } from '@/pages/signup/SignupPage'
+import Home from '@/pages/Home'
+import About from '@/pages/About'
+import Products from '@/pages/Products'
+import ProductDetail from '@/pages/ProductDetail'
+import Services from '@/pages/Services'
+import Resources from '@/pages/Resources'
+import Contact from '@/pages/Contact'
 
 export const router = createBrowserRouter([
   {
@@ -11,28 +15,31 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <LandingPage />,
+        element: <Home />,
       },
       {
-        path: 'login',
-        element: <LoginPage />,
+        path: 'about',
+        element: <About />,
       },
       {
-        path: 'signup',
-        element: <SignupPage />,
+        path: 'products',
+        element: <Products />,
       },
       {
-        path: 'nested-routing',
-        children: [
-          {
-            path: 'one',
-            element: <LandingPage />,
-          },
-          {
-            path: 'two',
-            element: <LandingPage />,
-          },
-        ],
+        path: 'products/:productId',
+        element: <ProductDetail />,
+      },
+      {
+        path: 'services',
+        element: <Services />,
+      },
+      {
+        path: 'resources',
+        element: <Resources />,
+      },
+      {
+        path: 'contact',
+        element: <Contact />,
       },
     ],
   },
