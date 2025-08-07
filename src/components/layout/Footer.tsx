@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Linkedin, Mail, Phone } from 'lucide-react'
+import { companyInfo } from '@/data/company'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -27,7 +28,7 @@ export function Footer() {
                 Your trusted provider of high-quality electrical components and accessories. Quality you can trust.
               </p>
               <p className="text-muted-foreground text-sm">
-                8/26, Ghalib Street No.20, Barkat Ali Road, Chowk Bull Road Near Ansa Tower, Lahore, Pakistan
+                {companyInfo.location}
               </p>
             </div>
 
@@ -52,18 +53,18 @@ export function Footer() {
             <div className="space-y-4">
               <h3 className="text-foreground text-sm font-semibold">Contact Us</h3>
               <ul className="text-muted-foreground space-y-2 text-sm">
+                {companyInfo.phoneNumbers.map((phone) => (
+                  <li key={phone} className="flex items-center space-x-2">
+                    <Phone className="h-4 w-4 flex-shrink-0" />
+                    <a href={`tel:${phone.replace(/\s|-/g, '')}`} className="hover:text-primary transition-colors">
+                      {phone}
+                    </a>
+                  </li>
+                ))}
                 <li className="flex items-center space-x-2">
-                  <Phone className="h-4 w-4" />
-                  <span>0333-6737921</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <Phone className="h-4 w-4" />
-                  <span>0301-4238234</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <Mail className="h-4 w-4" />
-                  <a href="mailto:sales@k-links.com.pk" className="hover:text-primary transition-colors">
-                    sales@k-links.com.pk
+                  <Mail className="h-4 w-4 flex-shrink-0" />
+                  <a href={`mailto:${companyInfo.email}`} className="hover:text-primary transition-colors">
+                    {companyInfo.email}
                   </a>
                 </li>
               </ul>
@@ -100,9 +101,10 @@ export function Footer() {
               <p className="text-muted-foreground text-sm">
                 © {currentYear} K-Links. All rights reserved.
               </p>
-              <p className="text-muted-foreground text-sm">
-                Quality you can trust.
-              </p>
+              <div className="text-muted-foreground text-sm space-y-1 text-center sm:text-right">
+                <p>Business Hours: Mon–Sat 9:00–18:00</p>
+                <p className="font-semibold">Quality you can trust.</p>
+              </div>
             </div>
           </div>
         </div>

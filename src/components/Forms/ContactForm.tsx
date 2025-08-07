@@ -3,6 +3,8 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { useState } from 'react'
+import { Loader2, CheckCircle, AlertCircle } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -15,41 +17,112 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { companyInfo } from '@/data/company'
 
 const formSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
+  fullName: z.string().min(2, { message: 'Full Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email address.' }),
-  phone: z.string().optional(),
+  phone: z
+    .string()
+    .regex(/^[\d\s+-]*$/, { message: 'Please enter a valid phone number.' })
+    .optional(),
   company: z.string().optional(),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+  message: z
+    .string()
+    .min(20, { message: 'Please provide a few details (at least 20 characters).' })
+    .max(1500, { message: 'Message cannot exceed 1500 characters.' }),
+  honeypot: z.string().optional(),
 })
 
 export function ContactForm() {
+  const [isSuccess, setIsSuccess] = useState(false)
+  const [submissionError, setSubmissionError] = useState<string | null>(null)
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
+      fullName: '',
       email: '',
       phone: '',
       company: '',
       message: '',
+      honeypot: '',
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // TODO: Implement form submission logic (e.g., send to an API endpoint)
-    console.log(values)
-    alert('Form submitted! (Check console for values)')
-    form.reset()
+  const { isSubmitting, isValid } = form.formState
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (values.honeypot) {
+      return
+    }
+
+    setSubmissionError(null)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      })
+
+      if (!response.ok) {
+        throw new Error('Something went wrong. Please try again.')
+      }
+
+      setIsSuccess(true)
+      form.reset()
+    } catch (error) {
+      setSubmissionError(
+        `Something went wrong. Please try again or email ${companyInfo.email}`,
+      )
+    }
+  }
+
+  if (isSuccess) {
+    return (
+      <div className="flex flex-col items-center justify-center rounded-lg bg-green-50 p-8 text-center text-green-800">
+        <CheckCircle className="mb-4 h-12 w-12" />
+        <h3 className="text-xl font-semibold">Thank you!</h3>
+        <p className="mt-2">We’ll get back to you within one business day.</p>
+      </div>
+    )
+  }
+
+  if (submissionError) {
+    return (
+      <div className="flex flex-col items-center justify-center rounded-lg bg-red-50 p-8 text-center text-red-800">
+        <AlertCircle className="mb-4 h-12 w-12" />
+        <h3 className="text-xl font-semibold">Submission Failed</h3>
+        <p className="mt-2" aria-live="polite">{submissionError}</p>
+        <Button onClick={() => setSubmissionError(null)} className="mt-6">Try Again</Button>
+      </div>
+    )
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        {/* Honeypot field for spam prevention */}
+        <div className="hidden">
           <FormField
             control={form.control}
-            name="name"
+            name="honeypot"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Don't fill this out</FormLabel>
+                <FormControl>
+                  <Input {...field} tabIndex={-1} autoComplete="off" />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <FormField
+            control={form.control}
+            name="fullName"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Full Name</FormLabel>
@@ -108,8 +181,8 @@ export function ContactForm() {
               <FormLabel>Message</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Tell us how we can help you"
-                  className="resize-none"
+                  placeholder="Tell us how we can help you..."
+                  className="min-h-[120px] resize-y"
                   {...field}
                 />
               </FormControl>
@@ -117,7 +190,15 @@ export function ContactForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Send Message</Button>
+        <div>
+          <Button type="submit" className="w-full md:w-auto" disabled={isSubmitting || !isValid}>
+            {isSubmitting ? (
+              <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...</>
+            ) : (
+              'Send Message'
+            )}
+          </Button>
+        </div>
       </form>
     </Form>
   )
