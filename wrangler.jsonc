@@ -1,0 +1,7 @@
+{
+  "name": "klinks-website",
+  "compatibility_date": "2025-08-07",
+  "assets": {
+    "directory": "./dist"
+  }
+}
