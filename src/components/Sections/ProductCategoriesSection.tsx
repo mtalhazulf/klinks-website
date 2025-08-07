@@ -1,14 +1,18 @@
-import { Link } from 'react-router-dom'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { productCategories } from '@/data/products'
+import { Link } from 'react-router-dom';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import type { ProductCategory } from '@/data/products';
 
-export function ProductCategoriesSection() {
+interface ProductCategoriesSectionProps {
+  categories: ProductCategory[];
+}
+
+export function ProductCategoriesSection({ categories }: ProductCategoriesSectionProps) {
   return (
     <section className="bg-background py-12 sm:py-16 lg:py-20">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {productCategories.map((category) => (
+          {categories.map((category) => (
             <Card key={category.id} className="flex flex-col overflow-hidden">
               <CardHeader>
                 <img
@@ -28,6 +32,11 @@ export function ProductCategoriesSection() {
               </CardFooter>
             </Card>
           ))}
+          {categories.length === 0 && (
+            <div className="col-span-full text-center">
+              <p className="text-lg text-muted-foreground">No products found matching your criteria.</p>
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -2,17 +2,13 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { useAppStore } from '@/stores/useAppStore'
+import { useTheme } from '@/contexts/ThemeContext'
 import { cn } from '@/lib/utils'
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { theme, setTheme } = useAppStore()
+  const { theme, toggleTheme } = useTheme()
   const location = useLocation()
-
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
-  }
 
   const isActive = (path: string) => location.pathname === path
 
@@ -32,10 +28,7 @@ export function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              {/* You can replace this with an <img> tag if you have a logo file */}
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <span className="text-sm font-bold text-white">KL</span>
-              </div>
+              <img src="/logo-nobg.png" alt="K-Links Logo" className="h-8 w-auto" />
               <span className="text-foreground hidden text-xl font-bold sm:block">
                 K-Links
               </span>

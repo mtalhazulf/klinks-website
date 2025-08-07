@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { devtools, persist } from 'zustand/middleware'
 
 interface AppState {
   theme: 'light' | 'dark'
@@ -19,24 +19,27 @@ interface AppState {
 
 export const useAppStore = create<AppState>()(
   devtools(
-    (set) => ({
-      theme: 'light',
-      setTheme: (theme) => set({ theme }),
-      user: {
-        id: null,
-        name: null,
-        email: null,
-      },
-      setUser: (user) => set({ user }),
-      clearUser: () =>
-        set({
-          user: { id: null, name: null, email: null },
-        }),
-      isLoading: false,
-      setIsLoading: (isLoading) => set({ isLoading }),
-    }),
-    {
-      name: 'app-store',
-    }
+    persist(
+      (set) => ({
+        theme: 'light',
+        setTheme: (theme) => set({ theme }),
+        user: {
+          id: null,
+          name: null,
+          email: null,
+        },
+        setUser: (user) => set({ user }),
+        clearUser: () =>
+          set({
+            user: { id: null, name: null, email: null },
+          }),
+        isLoading: false,
+        setIsLoading: (isLoading) => set({ isLoading }),
+      }),
+      {
+        name: 'app-store',
+        partialize: (state) => ({ theme: state.theme }),
+      }
+    )
   )
 )

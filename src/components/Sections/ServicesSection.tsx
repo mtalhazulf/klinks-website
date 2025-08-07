@@ -1,4 +1,4 @@
-import { BrainCircuit, Wrench, LifeBuoy } from 'lucide-react'
+import { BrainCircuit, Wrench, LifeBuoy, Presentation, Truck } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 
 const services = [
@@ -16,6 +16,16 @@ const services = [
     icon: <LifeBuoy className="h-10 w-10 text-primary" />,
     title: 'After-Sales Support',
     description: 'Our commitment to you continues after your purchase. We provide comprehensive after-sales support, including troubleshooting, and warranty services.',
+  },
+  {
+    icon: <Presentation className="h-10 w-10 text-primary" />,
+    title: 'Training & Workshops',
+    description: 'We empower your team with knowledge through customized training sessions and workshops on product usage, maintenance, and industry best practices.',
+  },
+  {
+    icon: <Truck className="h-10 w-10 text-primary" />,
+    title: 'Logistics & Delivery',
+    description: 'Our streamlined logistics ensure timely and reliable delivery of your products, with flexible options to meet your project schedule.',
   },
 ]
 

@@ -4,17 +4,17 @@ import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/ca
 const valueProps = [
   {
     icon: <ShieldCheck className="h-10 w-10 text-primary" />,
-    title: 'Uncompromising Quality',
+    title: 'Quality',
     description: 'We provide products that meet the highest international standards of safety and reliability, ensuring long-lasting performance.',
   },
   {
     icon: <Package className="h-10 w-10 text-primary" />,
-    title: 'Extensive Product Range',
+    title: 'Product Range',
     description: 'From cable management to industrial automation, our diverse inventory caters to all your electrical needs.',
   },
   {
     icon: <Wrench className="h-10 w-10 text-primary" />,
-    title: 'Expert Technical Support',
+    title: 'Technical Support',
     description: 'Our experienced team is always ready to provide technical guidance and help you find the perfect solution for your project.',
   },
 ]

@@ -5,7 +5,7 @@ import { productCategories } from '@/data/products'
 
 export function FeaturedProductsSection() {
   // Displaying only the first 3 categories as featured
-  const featuredCategories = productCategories.slice(0, 3)
+  const featuredCategories = productCategories.slice(0, 9)
 
   return (
     <section className="bg-background/80 py-12 sm:py-16 lg:py-20">

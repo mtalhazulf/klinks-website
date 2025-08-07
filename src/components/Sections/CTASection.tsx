@@ -9,7 +9,7 @@ export function CTASection() {
           Have a Project in Mind?
         </h2>
         <p className="mt-4 text-lg">
-          Let's discuss your requirements. Our team is ready to assist you with expert advice and solutions.
+          Let’s discuss your requirements.
         </p>
         <div className="mt-8">
           <Button

@@ -13,7 +13,7 @@ export function HeroSection() {
           Empowering Industries with Quality Electrical Solutions
         </h1>
         <p className="mt-6 text-lg text-gray-200 md:text-xl">
-          K-Links is your trusted partner for high-performance electrical components, from cable management to industrial automation.
+          Your trusted partner for high-performance electrical components — from cable management to industrial automation.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
@@ -21,7 +21,7 @@ export function HeroSection() {
           </Button>
           <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black">
             <a href="/klinks_product_catalogue.pdf" download>
-              Download Catalog
+              Download Catalogue
             </a>
           </Button>
         </div>

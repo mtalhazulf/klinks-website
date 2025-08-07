@@ -20,9 +20,7 @@ export function Footer() {
             {/* Brand & Address */}
             <div className="space-y-4 md:col-span-2 lg:col-span-1">
               <div className="flex items-center space-x-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                  <span className="text-sm font-bold text-white">KL</span>
-                </div>
+                <img src="/logo-nobg.png" alt="K-Links Logo" className="h-8 w-auto" />
                 <span className="text-foreground text-lg font-bold">K-Links</span>
               </div>
               <p className="text-muted-foreground text-sm">
@@ -83,7 +81,7 @@ export function Footer() {
                 >
                   <Linkedin className="h-5 w-5" />
                 </a>
-                 <a
+                <a
                   href="https://wa.me/923336737921"
                   target="_blank"
                   rel="noopener noreferrer"
