@@ -19,7 +19,7 @@ export function HeroSection() {
           <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
             <Link to="/products">Explore Products</Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black">
+          <Button asChild size="lg" variant="outline" className="border-white text-black hover:bg-white hover:text-primary">
             <a href="/klinks_product_catalogue.pdf" download>
               Download Catalogue
             </a>
