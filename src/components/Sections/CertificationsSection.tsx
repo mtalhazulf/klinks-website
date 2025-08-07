@@ -21,7 +21,7 @@ export function CertificationsSection() {
                 <Tooltip key={cert.name}>
                   <TooltipTrigger asChild>
                     <div className="flex h-20 w-20 cursor-pointer items-center justify-center rounded-lg bg-white p-2 text-center shadow-md transition-transform hover:scale-110 md:h-24 md:w-24">
-                      <span className="text-sm font-semibold text-secondary">{cert.name}</span>
+                      <img src={cert.image} alt={cert.name} className="h-12 w-12" />
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>

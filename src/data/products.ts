@@ -2,13 +2,17 @@ export interface ProductCategory {
   id: string;
   title: string;
   description: string;
-  image: string;
+  image: string; // Fallback
+  image_webp?: string;
+  image_jpg?: string;
+  datasheetUrl?: string;
   applications: string[];
   specifications?: { name: string; value: string }[];
   features?: string[];
   certifications?: string[];
   downloads?: { name: string; url: string }[];
   gallery?: string[];
+  faqs?: { question: string; answer: string }[];
 }
 
 export const productCategories: ProductCategory[] = [
@@ -16,7 +20,10 @@ export const productCategories: ProductCategory[] = [
     id: 'cable-ducts',
     title: 'PVC Cable Ducts',
     description: 'High-quality PVC cable ducts for organizing and protecting electrical wiring in industrial and commercial applications. Our ducts are made from high-impact, self-extinguishing rigid PVC, ensuring long-lasting durability and safety.',
-    image: '/assets/products/cable-duct.jpg',
+    image: '/assets/products/pvc-cable-ducts-and-covers.jpg',
+    image_webp: '/assets/products/pvc-cable-ducts-and-covers.webp',
+    image_jpg: '/assets/products/pvc-cable-ducts-and-covers.jpg',
+    datasheetUrl: '/downloads/datasheet-cable-ducts.pdf',
     applications: ['Panel Building', 'Industrial Automation', 'Commercial Buildings'],
     specifications: [
       { name: 'Material', value: 'Rigid PVC, self-extinguishing' },
@@ -38,9 +45,19 @@ export const productCategories: ProductCategory[] = [
       { name: 'Installation Guide', url: '/downloads/install-guide-cable-ducts.pdf' },
     ],
     gallery: [
-      '/assets/products/cable-duct.jpg',
+      '/assets/products/pvc-cable-ducts-and-covers.jpg',
       '/assets/gallery/products-showcase.jpg',
       '/assets/gallery/facility-1.jpg',
+    ],
+    faqs: [
+      {
+        question: 'What material are the ducts made of?',
+        answer: 'Our PVC cable ducts are manufactured from high-impact, self-extinguishing, rigid PVC for maximum durability and safety.',
+      },
+      {
+        question: 'What is the standard length of a single duct?',
+        answer: 'All our PVC cable ducts come in a standard length of 2 meters.',
+      },
     ],
   },
   {
