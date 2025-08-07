@@ -31,7 +31,7 @@ const formSchema = z.object({
     .string()
     .min(20, { message: 'Please provide a few details (at least 20 characters).' })
     .max(1500, { message: 'Message cannot exceed 1500 characters.' }),
-  honeypot: z.string().optional(), // Anti-spam honeypot field
+  honeypot: z.string().optional(),
 })
 
 export function ContactForm() {
@@ -54,7 +54,6 @@ export function ContactForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     if (values.honeypot) {
-      // Bot detected
       return
     }
 
@@ -199,13 +198,6 @@ export function ContactForm() {
               'Send Message'
             )}
           </Button>
-          <p className="mt-4 text-xs text-muted-foreground">
-            By submitting, you agree to our{' '}
-            <a href="/privacy" className="underline hover:text-primary">
-              privacy policy
-            </a>
-            .
-          </p>
         </div>
       </form>
     </Form>

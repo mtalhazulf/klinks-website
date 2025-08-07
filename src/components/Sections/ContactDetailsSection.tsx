@@ -1,4 +1,4 @@
-import { companyInfo } from '@/data/company'
+import { companyInfo, mapLocation } from '@/data/company'
 import { Mail, Phone, MapPin, MessageSquare } from 'lucide-react'
 import { Button } from '../ui/button'
 
@@ -8,12 +8,12 @@ const contactCards = [
     title: 'Our Address',
     content: (
       <a
-        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(companyInfo.location)}`}
+        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapLocation)}`}
         target="_blank"
         rel="noopener noreferrer"
         className="hover:text-primary"
       >
-        {companyInfo.location}
+        {mapLocation}
       </a>
     ),
   },
@@ -44,7 +44,11 @@ const contactCards = [
 ]
 
 export function ContactDetailsSection() {
-  return (
+  return (<>
+    <div className="bg-background py-12 text-center">
+      <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Contact Us</h1>
+      <p className="mt-4 text-lg text-muted-foreground">We're here to help. Reach out to us with any questions or inquiries.</p>
+    </div>
     <section className="bg-slate-50 py-12 sm:py-16 lg:py-20">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -61,16 +65,17 @@ export function ContactDetailsSection() {
           ))}
           <div className="flex items-center justify-center rounded-2xl bg-white p-6 shadow-sm md:col-span-2 lg:col-span-1">
             <div className="text-center">
-                <h3 className="mb-3 text-lg font-semibold">Need a quick answer?</h3>
-                <Button asChild className="w-full">
-                    <a href="https://wa.me/923336737921?text=Hello%20K-Links%2C%20I’d%20like%20to%20…" target="_blank" rel="noopener noreferrer">
-                        <MessageSquare className="mr-2 h-5 w-5" /> Chat on WhatsApp
-                    </a>
-                </Button>
+              <h3 className="mb-3 text-lg font-semibold">Need a quick answer?</h3>
+              <Button asChild className="w-full">
+                <a href="https://wa.me/923336737921?text=Hello%20K-Links%2C%20I’d%20like%20to%20…" target="_blank" rel="noopener noreferrer">
+                  <MessageSquare className="mr-2 h-5 w-5" /> Chat on WhatsApp
+                </a>
+              </Button>
             </div>
           </div>
         </div>
       </div>
     </section>
+  </>
   )
 }

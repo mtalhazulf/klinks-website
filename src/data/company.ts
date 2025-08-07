@@ -6,3 +6,5 @@ export const companyInfo = {
   email: 'sales@k-links.com.pk',
   website: 'www.k-links.com.pk',
 };
+
+export const mapLocation = 'Siddique Market, 9 Nishter Rd, Naulakha, Lahore, 54000, Pakistan';
