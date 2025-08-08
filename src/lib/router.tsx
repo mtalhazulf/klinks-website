@@ -6,7 +6,8 @@ import Products from '@/pages/Products'
 import ProductDetail from '@/pages/ProductDetail'
 import Services from '@/pages/Services'
 import Resources from '@/pages/Resources'
-import Contact from '@/pages/Contact'
+import Contact from '@/pages/Contact';
+import MauaaPage from '@/pages/brands/mauaa';
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: 'contact',
         element: <Contact />,
+      },
+      {
+        path: 'brands/mauaa',
+        element: <MauaaPage />,
       },
     ],
   },

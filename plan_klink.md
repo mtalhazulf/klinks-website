@@ -14,10 +14,9 @@ You are  **WindSurf** , an autonomous full-stack web development assistant. Your
 * **Target Clients** : Electrical switchgear manufacturers, contractors, OEMs, and industrial clients
 * **Value Proposition** : "Quality you can trust" - emphasis on reliability, timely delivery, and expert support
 * **Location** : 8/26, Ghalib Street No.20, Barkat Ali Road, Chowk Bull Road Near Ansa Tower, Lahore, Pakistan
-* **Contact** :
-* Phone: 0333-6737921, 0301-4238234, 042-37640047, 042-37640048
-* Email: sales@k-links.com.pk
-* Website: www.k-links.com.pk
+* **Contact** : 0333-6737921, 0301-4238234, 042-37640047, 042-37640048
+* **Email:** sales@k-links.com.pk
+* **Website**: www.k-links.com.pk
 
 ### Key Certifications & Standards:
 
