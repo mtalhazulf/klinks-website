@@ -13,19 +13,16 @@ function App() {
     root.classList.add(theme)
   }, [theme])
 
-  // Pages that should not show header/footer (like login, signup)
   const authPages = ['/login', '/signup']
   const isAuthPage = authPages.includes(location.pathname)
 
   return (
     <div className="min-h-screen">
       {isAuthPage ? (
-        // Auth pages without layout
         <div className="bg-background text-foreground min-h-screen">
           <Outlet />
         </div>
       ) : (
-        // Regular pages with layout
         <Layout>
           <Outlet />
         </Layout>

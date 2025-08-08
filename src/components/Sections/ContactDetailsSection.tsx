@@ -67,7 +67,7 @@ export function ContactDetailsSection() {
             <div className="text-center">
               <h3 className="mb-3 text-lg font-semibold">Need a quick answer?</h3>
               <Button asChild className="w-full">
-                <a href="https://wa.me/923336737921?text=Hello%20K-Links%2C%20I’d%20like%20to%20…" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/923214255404?text=Hello%20K-Links%2C%20I’d%20like%20to%20…" target="_blank" rel="noopener noreferrer">
                   <MessageSquare className="mr-2 h-5 w-5" /> Chat on WhatsApp
                 </a>
               </Button>
