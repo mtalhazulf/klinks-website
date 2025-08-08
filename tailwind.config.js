@@ -19,14 +19,24 @@ export default {
     },
     extend: {
       colors: {
+        'brand-teal': 'hsl(var(--brand-teal))',
+        'brand-charcoal': 'hsl(var(--brand-charcoal))',
+        'brand-gray-100': 'hsl(var(--brand-gray-100))',
+        'brand-gray-500': 'hsl(var(--brand-gray-500))',
+        'brand-white': 'hsl(var(--brand-white))',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
-        primary: '#0072BC',
-        secondary: '#2C2C2C',
-        accent: '#F5A623',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
         'light-neutral': '#F5F5F5',
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',

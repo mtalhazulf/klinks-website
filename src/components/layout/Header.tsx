@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -21,8 +21,20 @@ export function Header() {
     { path: '/contact', label: 'Contact' },
   ]
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add('overflow-hidden')
+    } else {
+      document.body.classList.remove('overflow-hidden')
+    }
+    return () => {
+      document.body.classList.remove('overflow-hidden')
+    }
+  }, [isMobileMenuOpen])
+
   return (
-    <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
+    <>
+      <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -99,20 +111,44 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="bg-background/95 border-t backdrop-blur md:hidden">
-            <div className="space-y-1 px-2 pt-2 pb-3">
+      </div>
+    </header>
+
+    {/* Mobile Menu - Full Screen */}
+    {isMobileMenuOpen && (
+      <div className="fixed inset-0 z-[100] bg-background md:hidden">
+        <div className="flex h-full flex-col">
+          {/* Mobile Menu Header */}
+          <div className="flex h-16 items-center justify-between border-b px-4">
+            <Link to="/" className="flex items-center space-x-2">
+              <img src="/logo-nobg.png" alt="K-Links Logo" className="h-8 w-auto" />
+              <span className="text-foreground text-xl font-bold">
+                K-Links
+              </span>
+            </Link>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="h-9 w-9"
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+          
+          {/* Mobile Menu Content */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="space-y-2 p-4">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
-                    'block rounded-md px-3 py-2 text-base font-medium transition-colors',
+                    'block rounded-lg px-4 py-4 text-lg font-medium transition-colors',
                     isActive(item.path)
-                      ? 'bg-primary/10 text-primary'
-                      : 'text-muted-foreground hover:text-primary hover:bg-accent'
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-foreground hover:bg-primary hover:text-primary-foreground'
                   )}
                 >
                   {item.label}
@@ -120,8 +156,33 @@ export function Header() {
               ))}
             </div>
           </div>
-        )}
+          
+          {/* Mobile Menu Footer */}
+          <div className="border-t p-4">
+            <div className="flex items-center justify-center">
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={toggleTheme}
+                className="flex items-center space-x-2"
+              >
+                {theme === 'light' ? (
+                  <>
+                    <Moon className="h-4 w-4" />
+                    <span>Dark Mode</span>
+                  </>
+                ) : (
+                  <>
+                    <Sun className="h-4 w-4" />
+                    <span>Light Mode</span>
+                  </>
+                )}
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
-    </header>
+    )}
+    </>
   )
 }

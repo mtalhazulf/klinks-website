@@ -37,7 +37,7 @@ export function GoogleMapSection() {
             href={mapsLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex mt-6 items-center rounded-lg bg-[#0072BC] px-5 py-2.5 text-white font-medium shadow hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0072BC]"
+            className="inline-flex mt-6 items-center rounded-lg bg-primary px-5 py-2.5 text-white font-medium shadow hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
           >
             Open in Google Maps
           </a>

@@ -16,7 +16,7 @@ export function CTASection() {
             asChild
             size="lg"
             variant="outline"
-            className="border-white text-white hover:bg-white hover:text-primary"
+            className="border-white text-black hover:bg-white hover:text-primary"
           >
             <Link to="/contact">Get in Touch</Link>
           </Button>
