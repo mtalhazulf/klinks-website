@@ -83,7 +83,7 @@ export function Footer() {
                   <Linkedin className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://wa.me/923336737921"
+                  href="https://wa.me/923214255404"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
